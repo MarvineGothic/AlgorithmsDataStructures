@@ -41,7 +41,7 @@ public class GBHbf {
                             giantComp = time;
                     }
 
-                    if (gbh.getCount() == 1) connected = time;
+                    if (gbh.count() == 1) connected = time;
 
                     //System.out.println(time + ": " + "count: " + gbh.getCount() + " size: "+ Arrays.toString(gbh.getSize()));
                 }

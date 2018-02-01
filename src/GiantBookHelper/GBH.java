@@ -57,7 +57,7 @@ public class GBH {
                     giantComp = time;
             }
             // if count == 1 then size array has total number of vertices and graph is connected
-            if (uf.getCount() == 1) connected = time;
+            if (uf.count() == 1) connected = time;
         }
         StdOut.println(n + " " + lastIsolatedV + " " + giantComp + " " + connected);
     }
@@ -134,13 +134,5 @@ public class GBH {
 
     public int[] getSize() {
         return size;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public int[] getParent() {
-        return parent;
     }
 }

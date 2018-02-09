@@ -1,26 +1,36 @@
-package GiantBookHelper;
-
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+package task2_GiantBookHelper;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GBH {
+public class MyUnionFind {
     private int[] parent;   // parent[i] = parent of i
     private int[] size;     // size[i] = number of sites in subtree rooted at i
     private int count;      // number of components
+    private int n;
+
+    private Set<Integer> setOfVertices = new HashSet<>();
+    private int time;
+    private int lastIsolatedV;
+    private int giantComp;
+    private int connected;
 
     /**
-     * Initializes an empty union–find data structure with {@code n} sites
+     * Initializes an empty erdosRenye–find data structure with {@code n} sites
      * {@code 0} through {@code n-1}. Each site is initially in its own
      * component.
      *
      * @param n the number of sites
      * @throws IllegalArgumentException if {@code n < 0}
      */
-    public GBH(int n) {
+    public MyUnionFind(int n) {
+        time = 0;
+        lastIsolatedV = -1;
+        giantComp = -1;
+        connected = -1;
+        this.n = n;
+
         count = n;
         parent = new int[n];
         size = new int[n];
@@ -30,37 +40,6 @@ public class GBH {
         }
     }
 
-    public static void main(String[] args) {
-        Set<Integer> setOfVertices = new HashSet<>();
-        int lastIsolatedV = -1;
-        int giantComp = -1;
-        int connected = -1;
-        int time = 0;
-        int n = StdIn.readInt();                            // number of vertices
-        GBH uf = new GBH(n);
-
-        while (!StdIn.isEmpty()) {
-            int p = StdIn.readInt();
-            int q = StdIn.readInt();
-            uf.union(p, q);
-            setOfVertices.add(p);
-            setOfVertices.add(q);
-            time++;
-            // finding the last isolated vertice using HashSet
-            if (setOfVertices.size() == n && lastIsolatedV == -1) {
-                lastIsolatedV = time;
-            }
-            // finding the first giant component(number of vertices >= half of total number)
-            if (giantComp == -1) {
-            int max = Arrays.stream(uf.getSize()).max().getAsInt();
-                if (max >= Math.ceil((double) n / 2))
-                    giantComp = time;
-            }
-            // if count == 1 then size array has total number of vertices and graph is connected
-            if (uf.count() == 1) connected = time;
-        }
-        StdOut.println(n + " " + lastIsolatedV + " " + giantComp + " " + connected);
-    }
 
     /**
      * Returns the number of components.
@@ -116,11 +95,11 @@ public class GBH {
      * @throws IllegalArgumentException unless
      *                                  both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
+
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
         if (rootP == rootQ) return;
-
         // make smaller root point to larger one
         if (size[rootP] < size[rootQ]) {
             parent[rootP] = rootQ;
@@ -132,7 +111,63 @@ public class GBH {
         count--;
     }
 
+    /**
+     * Implements Erdos-Renye algorithm
+     *
+     * @param p
+     * @param q
+     */
+
+    public void erdosRenye(int p, int q) {
+        union(p, q);
+
+        setOfVertices.add(p);
+        setOfVertices.add(q);
+        time++;
+        if (setOfVertices.size() == n && lastIsolatedV == -1) {
+            lastIsolatedV = time;
+        }
+
+        if (maxComponentSize(p) >= Math.ceil((double) n / 2) && giantComp == -1)
+            giantComp = time;
+        if (count() == 1 && connected == -1) connected = time;
+
+    }
+
+    public int[] getParent() {
+        return parent;
+    }
+
     public int[] getSize() {
         return size;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getLastIsolatedV() {
+        return lastIsolatedV;
+    }
+
+    public int getGiantComp() {
+        return giantComp;
+    }
+
+    public int getConnected() {
+        return connected;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int maxComponentSize(int p) {
+        //return size[find(p)];
+        return Arrays.stream(size).max().getAsInt();
     }
 }

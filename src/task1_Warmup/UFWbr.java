@@ -7,7 +7,7 @@ package task1_Warmup;
  *                http://algs4.cs.princeton.edu/15uf/mediumUF.txt
  *                http://algs4.cs.princeton.edu/15uf/largeUF.txt
  *
- *  Weighted quick-erdosRenye by rank with path compression by halving.
+ *  Weighted quick-erdosRenyi by rank with path compression by halving.
  *
  *  % java UF < tinyUF.txt
  *  true

@@ -17,7 +17,7 @@ public class MyUnionFind {
     private int connected;
 
     /**
-     * Initializes an empty erdosRenye–find data structure with {@code n} sites
+     * Initializes an empty erdosRenyi–find data structure with {@code n} sites
      * {@code 0} through {@code n-1}. Each site is initially in its own
      * component.
      *
@@ -112,26 +112,26 @@ public class MyUnionFind {
     }
 
     /**
-     * Implements Erdos-Renye algorithm
+     * Method that uses Erdos-Renyi model
+     * and calculates the time of first giant component,
+     * last isolated vertex and connected graph
      *
-     * @param p
-     * @param q
+     * @param p element one
+     * @param q element two
      */
 
-    public void erdosRenye(int p, int q) {
+    public void erdosRenyi(int p, int q) {
         union(p, q);
-
         setOfVertices.add(p);
         setOfVertices.add(q);
         time++;
         if (setOfVertices.size() == n && lastIsolatedV == -1) {
             lastIsolatedV = time;
         }
-        if (maxComponentSize(p) >= Math.ceil((double) n / 2) && giantComp == -1)
+        if (size[find(p)] >= Math.ceil((double) n / 2) && giantComp == -1)
             giantComp = time;
         if (count() == 1 && connected == -1) connected = time;
     }
-
 
     public int getLastIsolatedV() {
         return lastIsolatedV;
@@ -143,9 +143,5 @@ public class MyUnionFind {
 
     public int getConnected() {
         return connected;
-    }
-
-    public int maxComponentSize(int p) {
-        return size[find(p)];
     }
 }

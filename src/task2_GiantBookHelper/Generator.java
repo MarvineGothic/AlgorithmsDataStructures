@@ -13,7 +13,7 @@ class Generator {
     /**
      * Method testing MyUnionFind by generating sites with given number of vertices.
      * @param numberOfVertices - number of vertices, needed to create a site
-     * @param tests
+     * @param tests number of tests to run
      */
     static void test(int numberOfVertices, int tests) {
         double[] lastIsolatedVertex = new double[tests];
@@ -25,7 +25,7 @@ class Generator {
             while (uf.getConnected() == -1) {
                 int p = StdRandom.uniform(numberOfVertices);
                 int q = StdRandom.uniform(numberOfVertices);
-                uf.erdosRenye(p, q);
+                uf.erdosRenyi(p, q);
             }
             lastIsolatedVertex[i] = uf.getLastIsolatedV();
             giantComponent[i] = uf.getGiantComp();

@@ -12,7 +12,7 @@ public class GBH {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
             if (uf.connected(p, q)) continue;
-            uf.erdosRenye(p, q);
+            uf.erdosRenyi(p, q);
         }
         StdOut.println(n + " "  + uf.getLastIsolatedV() + " " + uf.getGiantComp() + " " + uf.getConnected());
     }

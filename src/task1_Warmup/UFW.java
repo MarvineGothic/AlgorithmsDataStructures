@@ -1,6 +1,5 @@
 package task1_Warmup;
 
-import edu.princeton.cs.algs4.QuickFindUF;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;

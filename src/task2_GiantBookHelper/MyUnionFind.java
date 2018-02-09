@@ -1,6 +1,6 @@
 package task2_GiantBookHelper;
 
-import java.util.Arrays;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -127,24 +127,11 @@ public class MyUnionFind {
         if (setOfVertices.size() == n && lastIsolatedV == -1) {
             lastIsolatedV = time;
         }
-
         if (maxComponentSize(p) >= Math.ceil((double) n / 2) && giantComp == -1)
             giantComp = time;
         if (count() == 1 && connected == -1) connected = time;
-
     }
 
-    public int[] getParent() {
-        return parent;
-    }
-
-    public int[] getSize() {
-        return size;
-    }
-
-    public int getCount() {
-        return count;
-    }
 
     public int getLastIsolatedV() {
         return lastIsolatedV;
@@ -158,16 +145,7 @@ public class MyUnionFind {
         return connected;
     }
 
-    public int getN() {
-        return n;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
     public int maxComponentSize(int p) {
-        //return size[find(p)];
-        return Arrays.stream(size).max().getAsInt();
+        return size[find(p)];
     }
 }

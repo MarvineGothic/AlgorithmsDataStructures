@@ -11,10 +11,10 @@ public class MyUnionFind {
     private int n;
 
     private Set<Integer> setOfVertices = new HashSet<>();
-    private int time;
-    private int lastIsolatedV;
-    private int giantComp;
-    private int connected;
+    private int time = 0;
+    private int lastIsolatedV = -1;
+    private int giantComp = -1;
+    private int connected = -1;
 
     /**
      * Initializes an empty erdosRenyi–find data structure with {@code n} sites
@@ -25,12 +25,7 @@ public class MyUnionFind {
      * @throws IllegalArgumentException if {@code n < 0}
      */
     public MyUnionFind(int n) {
-        time = 0;
-        lastIsolatedV = -1;
-        giantComp = -1;
-        connected = -1;
         this.n = n;
-
         count = n;
         parent = new int[n];
         size = new int[n];
@@ -125,9 +120,8 @@ public class MyUnionFind {
         setOfVertices.add(p);
         setOfVertices.add(q);
         time++;
-        if (setOfVertices.size() == n && lastIsolatedV == -1) {
+        if (setOfVertices.size() == n && lastIsolatedV == -1)
             lastIsolatedV = time;
-        }
         if (size[find(p)] >= Math.ceil((double) n / 2) && giantComp == -1)
             giantComp = time;
         if (count() == 1 && connected == -1) connected = time;

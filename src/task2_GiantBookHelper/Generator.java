@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.StdStats;
 class Generator {
 
     public static void main(String[] args) {
-        Generator.test(1000, 100);
+        Generator.test(10_000_000, 1);
     }
 
     /**
@@ -19,7 +19,7 @@ class Generator {
         double[] lastIsolatedVertex = new double[tests];
         double[] giantComponent = new double[tests];
         double[] connectedGraph = new double[tests];
-
+        long start = System.nanoTime();
         for (int i = 0; i < tests; i++) {
             MyUnionFind uf = new MyUnionFind(numberOfVertices);
             while (uf.getConnected() == -1) {
@@ -43,9 +43,9 @@ class Generator {
         double cAverage = StdStats.mean(connectedGraph);
         double cDeviation = StdStats.stddev(connectedGraph);
 
-        StdOut.printf("N: %d\nT: %d\nGiantComp: %s (%s)\nNo Isolated: %s (%s)\nConnected: %s (%s)\n",
+        StdOut.printf("N: %d\nT: %d\nGiantComp: %s (%s)\nNo Isolated: %s (%s)\nConnected: %s (%s)\nTime: %s sec",
                 numberOfVertices, tests, format(gCAverage), format(gCDeviation), format(lVAverage),
-                format(lVDeviation), format(cAverage), format(cDeviation));
+                format(lVDeviation), format(cAverage), format(cDeviation), format((System.nanoTime()-start)/1e9));
     }
 
     /**

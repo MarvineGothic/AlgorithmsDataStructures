@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 
-public class GBH {
+public class GiantBook {
     public static void main(String[] args) {
         int n = StdIn.readInt();
         MyUnionFind uf = new MyUnionFind(n);
@@ -13,6 +13,6 @@ public class GBH {
             int q = StdIn.readInt();
             uf.erdosRenyi(p, q);
         }
-        StdOut.println(n + " "  + uf.getLastIsolatedV() + " " + uf.getGiantComp() + " " + uf.getConnected());
+        StdOut.println(n + " "  + uf.getLastIsolatedVertex() + " " + uf.getGiantComponent() + " " + uf.getGraphConnected());
     }
 }

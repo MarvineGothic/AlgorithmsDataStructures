@@ -44,18 +44,17 @@ public class RandomQueue<Item> implements Iterable<Item>
     }
     private class RandomQueueIterator implements Iterator<Item> {
         int currentIndex = 0;
-        RandomQueue<Item> randomQueue;
 
         public RandomQueueIterator() {
-            randomQueue = new RandomQueue<>();
+            StdRandom.shuffle(elements);
         }
         public boolean hasNext()  {
-            return randomQueue.size() != currentIndex;
+            return size() != currentIndex;
         }
         public void remove()      { throw new UnsupportedOperationException();  }
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
-            return randomQueue.elements[currentIndex++];
+            return elements[currentIndex++];
         }
     }
 

@@ -9,41 +9,41 @@ import edu.princeton.cs.algs4.StdStats;
 
 public class RandomQueue<Item> implements Iterable<Item>
 {
-    private Item[] elements;
-    int itemCount = 0;
+    private Item[] items;
+    private int itemCount = 0;
 
     public RandomQueue() { // create an empty random queue
-        elements = (Item[]) new Object[1];
+        items = (Item[]) new Object[1];
     }
     public boolean isEmpty() {// is it empty?
         return itemCount == 0;
     }
-    public int size() {// return the number of elements
+    public int size() {// return the number of items
         return itemCount;
     }
 
     public void enqueue(Item item){
-        if (itemCount == elements.length){
-            Object[] tempElements = new Object[elements.length*2];
-            System.arraycopy(elements, 0, tempElements, 0, size());
-            elements = (Item[]) tempElements;
+        if (itemCount == items.length){
+            Object[] tempElements = new Object[items.length*2];
+            System.arraycopy(items, 0, tempElements, 0, itemCount);
+            items = (Item[]) tempElements;
         }
-        elements[itemCount] = item;
+        items[itemCount] = item;
         itemCount++;
     }
 
     public Item sample(){ // return (but do not remove) a random item
         if (isEmpty()){throw new RuntimeException();}
-        return elements[StdRandom.uniform(itemCount)];
+        return items[StdRandom.uniform(itemCount)];
     }
     public Item dequeue(){ // remove and return a random item
         if (isEmpty()){ throw new RuntimeException();}
-        int indexOfRemovedElement = StdRandom.uniform(itemCount);
-        Item removedElement = elements[indexOfRemovedElement];
-        elements[indexOfRemovedElement] = elements[itemCount-1];
-        elements[itemCount-1] = null;
+        int indexOfRemovedItem = StdRandom.uniform(itemCount);
+        Item removedItem = items[indexOfRemovedItem];
+        items[indexOfRemovedItem] = items[itemCount-1];
+        items[itemCount-1] = null;
         itemCount--;
-        return removedElement;
+        return removedItem;
     }
 
     public Iterator<Item> iterator() { // return an iterator over the items in random order
@@ -53,14 +53,14 @@ public class RandomQueue<Item> implements Iterable<Item>
         int currentIndex = 0;
 
         public RandomQueueIterator() {
-            StdRandom.shuffle(elements, 0, size());
+            StdRandom.shuffle(items, 0, itemCount);
         }
         public boolean hasNext()  {
-            return size() != currentIndex;
+            return itemCount != currentIndex;
         }
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
-            return elements[currentIndex++];
+            return items[currentIndex++];
         }
     }
 

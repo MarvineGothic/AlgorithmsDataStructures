@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="850717b7-7fc3-40ec-bc65-c3f15b24d641" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/AD/task1_Warmup/UFW.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/AD/task1_Warmup/UFWbr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/AD/task2_GiantBookHelper/MyUnionFind.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RandomQueue.java" afterPath="$PROJECT_DIR$/src/RandomQueue.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,10 +30,14 @@
       <file leaf-file-name="RandomQueue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RandomQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+            <state relative-caret-position="799">
+              <caret line="118" column="5" lean-forward="false" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3305#3306#0" expanded="true" />
+                <element signature="e#3406#3407#0" expanded="true" />
+                <element signature="e#3715#3716#0" expanded="true" />
+                <element signature="e#3780#3781#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,6 +85,7 @@
         <option value="$PROJECT_DIR$/src/task2_GiantBookHelper/GBH.java" />
         <option value="$PROJECT_DIR$/src/task2_GiantBookHelper/Generator.java" />
         <option value="$PROJECT_DIR$/src/task3_RandomQueue/RandomQueue.java" />
+        <option value="$PROJECT_DIR$/src/RandomQueue.java" />
       </list>
     </option>
   </component>
@@ -358,12 +361,20 @@
       <updated>1518184279343</updated>
       <workItem from="1518184282640" duration="10009000" />
       <workItem from="1518509780064" duration="12360000" />
-      <workItem from="1518625174080" duration="74000" />
+      <workItem from="1518625174080" duration="603000" />
     </task>
+    <task id="LOCAL-00001" summary="RandomQueue">
+      <created>1518625299715</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1518625299715</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22443000" />
+    <option name="totallyTimeSpent" value="22972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="10" width="1932" height="1028" extended-state="0" />
@@ -406,6 +417,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="RandomQueue" />
     <option name="LAST_COMMIT_MESSAGE" value="RandomQueue" />
   </component>
@@ -469,10 +482,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RandomQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+        <state relative-caret-position="799">
+          <caret line="118" column="5" lean-forward="false" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3305#3306#0" expanded="true" />
+            <element signature="e#3406#3407#0" expanded="true" />
+            <element signature="e#3715#3716#0" expanded="true" />
+            <element signature="e#3780#3781#0" expanded="true" />
           </folding>
         </state>
       </provider>

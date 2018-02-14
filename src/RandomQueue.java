@@ -7,8 +7,7 @@ import java.util.NoSuchElementException;
 
 @SuppressWarnings("unchecked")
 public class RandomQueue<Item> implements Iterable<Item> {
-    // Your code goes here.
-    // Mine takes ca. 60 lines, my longest method has 5 lines.
+
     private Item[] items = (Item[]) new Object[1];
     private int size = 0;
 
@@ -86,17 +85,12 @@ public class RandomQueue<Item> implements Iterable<Item> {
 
     public Item dequeue() { // remove and return a random item
         if (isEmpty()) throw new RuntimeException();
-        Item dequeueItem = swapRandomElement(size - 1);
+        int index = StdRandom.uniform(size);
+        Item dequeueItem = items[index];
+        items[index] = items[size - 1];
         items[size - 1] = null;
         size--;
         return dequeueItem;
-    }
-
-    public Item swapRandomElement(int element) {
-        int index = StdRandom.uniform(size);
-        Item item = items[index];
-        items[index] = items[element];
-        return item;
     }
 
     public Iterator<Item> iterator() { // return an iterator over the items in random order
@@ -107,7 +101,7 @@ public class RandomQueue<Item> implements Iterable<Item> {
         private int cursor = 0;
 
         public RandomQueueIterator() {
-            StdRandom.shuffle(items);
+            StdRandom.shuffle(items, 0, size);
         }
 
         public boolean hasNext() {

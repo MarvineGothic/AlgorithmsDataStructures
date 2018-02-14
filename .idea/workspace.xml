@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="850717b7-7fc3-40ec-bc65-c3f15b24d641" name="Default" comment="">
+    <list default="true" id="850717b7-7fc3-40ec-bc65-c3f15b24d641" name="Default" comment="RandomQueue">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RandomQueue.java" afterPath="$PROJECT_DIR$/src/RandomQueue.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,6 +71,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="MoreThanLovelyVersion" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -361,7 +365,7 @@
       <updated>1518184279343</updated>
       <workItem from="1518184282640" duration="10009000" />
       <workItem from="1518509780064" duration="12360000" />
-      <workItem from="1518625174080" duration="603000" />
+      <workItem from="1518625174080" duration="671000" />
     </task>
     <task id="LOCAL-00001" summary="RandomQueue">
       <created>1518625299715</created>
@@ -370,11 +374,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518625299715</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="RandomQueue">
+      <created>1518625794589</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518625794589</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22972000" />
+    <option name="totallyTimeSpent" value="23040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="10" width="1932" height="1028" extended-state="0" />

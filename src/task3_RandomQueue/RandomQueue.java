@@ -11,7 +11,6 @@ public class RandomQueue<Item> implements Iterable<Item>
 {
     private Item[] items;
     private int size = 0;
-
     public RandomQueue() { // create an empty random queue
         items = (Item[]) new Object[1];
     }
@@ -21,7 +20,6 @@ public class RandomQueue<Item> implements Iterable<Item>
     public int size() {// return the number of items
         return size;
     }
-
     public void enqueue(Item item){
         if (size == items.length){
             Object[] tempElements = new Object[items.length*2];
@@ -29,9 +27,7 @@ public class RandomQueue<Item> implements Iterable<Item>
             items = (Item[]) tempElements;
         }
         items[size++] = item;
-        //itemCount++;
     }
-
     public Item sample(){ // return (but do not remove) a random item
         if (isEmpty()){throw new RuntimeException();}
         return items[StdRandom.uniform(size)];
@@ -45,13 +41,11 @@ public class RandomQueue<Item> implements Iterable<Item>
         size--;
         return removedItem;
     }
-
     public Iterator<Item> iterator() { // return an iterator over the items in random order
         return new RandomQueueIterator();
     }
     private class RandomQueueIterator implements Iterator<Item> {
         int cursor = 0;
-
         public RandomQueueIterator() {
             StdRandom.shuffle(items, 0, size);
         }

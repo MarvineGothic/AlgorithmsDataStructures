@@ -1,6 +1,5 @@
 package task3_RandomQueue;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -8,37 +7,45 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
-
 public class RandomQueue<Item> implements Iterable<Item>
 {
     private Item[] elements;
-    // Mine takes ca. 60 lines, my longest method has 5 lines.
+    int itemCount = 0;
 
     public RandomQueue() { // create an empty random queue
-        elements = (Item[]) new Object[0];
+        elements = (Item[]) new Object[1];
     }
     public boolean isEmpty() {// is it empty?
-        return size()==0;
+        return itemCount == 0;
     }
     public int size() {// return the number of elements
-        return elements.length;
+        return itemCount;
     }
-    public void enqueue(Item item) {// add an item
-        elements = Arrays.copyOf(elements, size()+1);
-        elements[size()-1] = item;
+
+    public void enqueue(Item item){
+        if (itemCount == elements.length){
+            Object[] tempElements = new Object[elements.length*2];
+            System.arraycopy(elements, 0, tempElements, 0, size());
+            elements = (Item[]) tempElements;
+        }
+        elements[itemCount] = item;
+        itemCount++;
     }
+
     public Item sample(){ // return (but do not remove) a random item
-        return elements[StdRandom.uniform(size())];
+        if (isEmpty()){throw new RuntimeException();}
+        return elements[StdRandom.uniform(itemCount)];
     }
     public Item dequeue(){ // remove and return a random item
-        int indexOfRemovedElement = StdRandom.uniform(size());
-        Item removedElement = (Item) elements[indexOfRemovedElement];
-        Object[] tempElements = new Object[elements.length-1];
-        System.arraycopy(elements, 0, tempElements, 0, indexOfRemovedElement);
-        System.arraycopy(elements, indexOfRemovedElement+1, tempElements, indexOfRemovedElement, tempElements.length-indexOfRemovedElement);
-        elements = (Item[]) tempElements;
+        if (isEmpty()){ throw new RuntimeException();}
+        int indexOfRemovedElement = StdRandom.uniform(itemCount);
+        Item removedElement = elements[indexOfRemovedElement];
+        elements[indexOfRemovedElement] = elements[itemCount-1];
+        elements[itemCount-1] = null;
+        itemCount--;
         return removedElement;
     }
+
     public Iterator<Item> iterator() { // return an iterator over the items in random order
         return new RandomQueueIterator();
     }
@@ -46,12 +53,11 @@ public class RandomQueue<Item> implements Iterable<Item>
         int currentIndex = 0;
 
         public RandomQueueIterator() {
-            StdRandom.shuffle(elements);
+            StdRandom.shuffle(elements, 0, size());
         }
         public boolean hasNext()  {
             return size() != currentIndex;
         }
-        public void remove()      { throw new UnsupportedOperationException();  }
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             return elements[currentIndex++];

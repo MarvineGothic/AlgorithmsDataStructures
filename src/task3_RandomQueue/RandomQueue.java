@@ -10,39 +10,39 @@ import edu.princeton.cs.algs4.StdStats;
 public class RandomQueue<Item> implements Iterable<Item>
 {
     private Item[] items;
-    private int itemCount = 0;
+    private int size = 0;
 
     public RandomQueue() { // create an empty random queue
         items = (Item[]) new Object[1];
     }
     public boolean isEmpty() {// is it empty?
-        return itemCount == 0;
+        return size == 0;
     }
     public int size() {// return the number of items
-        return itemCount;
+        return size;
     }
 
     public void enqueue(Item item){
-        if (itemCount == items.length){
+        if (size == items.length){
             Object[] tempElements = new Object[items.length*2];
-            System.arraycopy(items, 0, tempElements, 0, itemCount);
+            System.arraycopy(items, 0, tempElements, 0, size);
             items = (Item[]) tempElements;
         }
-        items[itemCount] = item;
-        itemCount++;
+        items[size++] = item;
+        //itemCount++;
     }
 
     public Item sample(){ // return (but do not remove) a random item
         if (isEmpty()){throw new RuntimeException();}
-        return items[StdRandom.uniform(itemCount)];
+        return items[StdRandom.uniform(size)];
     }
     public Item dequeue(){ // remove and return a random item
         if (isEmpty()){ throw new RuntimeException();}
-        int indexOfRemovedItem = StdRandom.uniform(itemCount);
+        int indexOfRemovedItem = StdRandom.uniform(size);
         Item removedItem = items[indexOfRemovedItem];
-        items[indexOfRemovedItem] = items[itemCount-1];
-        items[itemCount-1] = null;
-        itemCount--;
+        items[indexOfRemovedItem] = items[size-1];
+        items[size-1] = null;
+        size--;
         return removedItem;
     }
 
@@ -50,17 +50,17 @@ public class RandomQueue<Item> implements Iterable<Item>
         return new RandomQueueIterator();
     }
     private class RandomQueueIterator implements Iterator<Item> {
-        int currentIndex = 0;
+        int cursor = 0;
 
         public RandomQueueIterator() {
-            StdRandom.shuffle(items, 0, itemCount);
+            StdRandom.shuffle(items, 0, size);
         }
         public boolean hasNext()  {
-            return itemCount != currentIndex;
+            return size != cursor;
         }
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
-            return items[currentIndex++];
+            return items[cursor++];
         }
     }
 

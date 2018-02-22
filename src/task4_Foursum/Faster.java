@@ -18,7 +18,7 @@ public class Faster implements FourSum{
     public boolean evaluateFoursum(int N, long[] vals) {
         int l, r;
         Arrays.sort(vals);
-        // your code goes here and uses the following
+        // N^3
         for (int i = 0; i < N - 3; i++) {
             for (int j = i + 1; j < N - 2; j++) {
                 l = j + 1;

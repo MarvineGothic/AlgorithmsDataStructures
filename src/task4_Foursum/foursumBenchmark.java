@@ -66,19 +66,16 @@ public class foursumBenchmark {
         return result;
     }
 
-    private static void printResults(String message, Map<Integer, ArrayList<Integer>> map) {
-        System.out.println(message);
-        printResults(map);
-    }
-
-    private static void printResults(Map<Integer, ArrayList<Integer>> runtimes) {
+    private static void printResults(String message, Map<Integer, ArrayList<Integer>> runtimes) {
         for (Map.Entry<Integer, ArrayList<Integer>> entry : runtimes.entrySet()) {
             int T = entry.getValue().size();
             int[] i = new int[T];
             for (int j = 0; j < T; j++) {
                 i[j] = entry.getValue().get(j);
             }
-            System.out.printf("N = %d\tT = %d\t\tAvg = %.2f ms\t\tstdDev = %.2f\n", entry.getKey(), T, StdStats.mean(i), StdStats.stddev(i));
+            System.out.printf("%s\nN = %d\t\tT = %d\t\tAvg = %.2f ms\t\tstdDev = %.2f\n",
+                    message, entry.getKey(), T, StdStats.mean(i),
+                    StdStats.stddev(i));
         }
     }
 

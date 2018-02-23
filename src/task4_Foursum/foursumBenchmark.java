@@ -18,10 +18,10 @@ public class foursumBenchmark {
     private static TreeMap<Integer, ArrayList<Integer>> fastestRuntimes = new TreeMap<>();
 
     public static void main(String[] args) {
-        int testSize = 3200;
-        simpleRuntimes.putAll(runTest(20, new Simple(), testSize));
-        fasterRuntimes.putAll(runTest(20, new Faster(), testSize));
-        fastestRuntimes.putAll(runTest(20, new Fastest(), testSize));
+        int testSize = 100;
+        simpleRuntimes.putAll(runTest(100, new Simple(), testSize));
+        fasterRuntimes.putAll(runTest(1000, new Faster(), testSize));
+        fastestRuntimes.putAll(runTest(1000, new Fastest(), testSize));
         printResults("Simple method results:", simpleRuntimes);
         printResults("Faster method results:", fasterRuntimes);
         printResults("Fastest method results:", fastestRuntimes);
@@ -41,7 +41,7 @@ public class foursumBenchmark {
                             long[] vals = new long[N];
                             for (int i = 0; i < N; i++) vals[i] = Long.parseLong(s.nextLine());
 
-                            if (!(fourSumClass instanceof Simple && N > 1900) && N == testSize) {
+                            if (!(fourSumClass instanceof Simple && N > 800) && N == testSize) {
                                 System.out.println("Trying: " + fileName);
                                 for (int i = 0; i < numberOfTests; i++) {
                                     shuffleArray(vals);

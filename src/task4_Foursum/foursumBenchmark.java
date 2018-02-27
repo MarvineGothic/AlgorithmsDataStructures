@@ -13,22 +13,18 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 public class foursumBenchmark {
-    private static TreeMap<Integer, ArrayList<Integer>> fasterRuntimes = new TreeMap<>();
-    private static TreeMap<Integer, ArrayList<Integer>> simpleRuntimes = new TreeMap<>();
-    private static TreeMap<Integer, ArrayList<Integer>> fastestRuntimes = new TreeMap<>();
 
     public static void main(String[] args) {
-        int testSize = 100;
-        simpleRuntimes.putAll(runTest(100, new Simple(), testSize));
-        fasterRuntimes.putAll(runTest(1000, new Faster(), testSize));
-        fastestRuntimes.putAll(runTest(1000, new Fastest(), testSize));
-        printResults("Simple method results:", simpleRuntimes);
-        printResults("Faster method results:", fasterRuntimes);
-        printResults("Fastest method results:", fastestRuntimes);
+        int testSize = 3200;
+        /*printResults("Simple method results:", runTest(100, new Simple(), 100));
+        printResults("Simple method results:", runTest(10, new Simple(), 200));
+        printResults("Simple method results:", runTest(5, new Simple(), 400));*/
+        printResults("Faster method results:", runTest(20, new Faster(), testSize));
+        printResults("Fastest method results:", runTest(20, new Fastest(), testSize));
     }
 
     private static TreeMap<Integer, ArrayList<Integer>> runTest(int numberOfTests, FourSum fourSumClass, int testSize) {
-        System.out.println("Tests: " + fourSumClass.getClass().getSimpleName());
+        //System.out.println("Tests: " + fourSumClass.getClass().getSimpleName());
         TreeMap<Integer, ArrayList<Integer>> result = new TreeMap<>();
         try (Stream<Path> paths = Files.walk(Paths.get(System.getProperty("user.dir") + File.separator + "src" + File.separator +
                 "task4_foursum" + File.separator + "data"))) {
@@ -42,7 +38,7 @@ public class foursumBenchmark {
                             for (int i = 0; i < N; i++) vals[i] = Long.parseLong(s.nextLine());
 
                             if (!(fourSumClass instanceof Simple && N > 800) && N == testSize) {
-                                System.out.println("Trying: " + fileName);
+                                //System.out.println("Trying: " + fileName);
                                 for (int i = 0; i < numberOfTests; i++) {
                                     shuffleArray(vals);
 
@@ -73,9 +69,8 @@ public class foursumBenchmark {
             for (int j = 0; j < T; j++) {
                 i[j] = entry.getValue().get(j);
             }
-            System.out.printf("%s\nN = %d\t\tT = %d\t\tAvg = %.2f ms\t\tstdDev = %.2f\n",
-                    message, entry.getKey(), T, StdStats.mean(i),
-                    StdStats.stddev(i));
+            System.out.printf("%s\nN = %d\t\tT = %d\t\tMin = %s\t\tAvg = %.2f ms\t\tMax = %s\t\tstdDev = %.2f\n",
+                    message, entry.getKey(), T, StdStats.min(i), StdStats.mean(i), StdStats.max(i), StdStats.stddev(i));
         }
     }
 

@@ -1,6 +1,7 @@
 package task4_Foursum;
 
 import edu.princeton.cs.algs4.StdStats;
+import task4_Foursum.javaSol.Simple;
 
 import java.io.File;
 import java.io.FileNotFoundException;
